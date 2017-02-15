@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">HW5_Group34</string>
     <string name="goButton">Go</string>
+    <string name="gameDets">Game Details</string>
 </resources>
