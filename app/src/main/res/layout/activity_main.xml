@@ -10,8 +10,11 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.joyrasmussen.hw5_group34.MainActivity">
 
-    <TextView
+    <Button
+        android:text="@string/goButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/goButton" />
 </RelativeLayout>
