@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.joyrasmussen.hw5_group34">
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -15,13 +17,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".GameDetailsActivity" android:label="@string/gameDets">
+        <activity
+            android:name=".GameDetailsActivity"
+            android:label="@string/gameDets">
             <intent-filter>
-                <action android:name="com.example.joyrasmussen.hw5_group34.intent.action.Details"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-            </intent-filter>
+                <action android:name="com.example.joyrasmussen.hw5_group34.intent.action.Details" />
 
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
+        <activity android:name=".SimilarGames"></activity>
     </application>
 
 </manifest>

@@ -2,4 +2,10 @@
     <string name="app_name">HW5_Group34</string>
     <string name="goButton">Go</string>
     <string name="gameDets">Game Details</string>
+    <string name="OverView">Overview:</string>
+    <string name="fin">Finish</string>
+    <string name="sim">Similar Games</string>
+    <string name="play">Play Trailer</string>
+    <string name="genre">Genre:</string>
+    <string name="pub">Publisher:</string>
 </resources>
