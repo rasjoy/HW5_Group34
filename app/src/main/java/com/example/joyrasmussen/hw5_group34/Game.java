@@ -1,10 +1,15 @@
 package com.example.joyrasmussen.hw5_group34;
 
-/**
- * Created by joyrasmussen on 2/15/17.
- */
+import java.io.Serializable;
 
-public class Game {
+/*
+HW 05
+MainActivity.java
+Robert Holt & Joy Rasmussen
+Group 34
+*/
+
+public class Game implements Serializable{
     String id, title, platform, release;
 
     public Game(Game game){

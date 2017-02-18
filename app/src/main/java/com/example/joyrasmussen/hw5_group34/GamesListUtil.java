@@ -1,15 +1,19 @@
 package com.example.joyrasmussen.hw5_group34;
 
-
 import android.util.Log;
-
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParserFactory;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+
+/*
+HW 05
+MainActivity.java
+Robert Holt & Joy Rasmussen
+Group 34
+ */
 
 public class GamesListUtil {
 
@@ -46,15 +50,13 @@ public class GamesListUtil {
                     case XmlPullParser.END_TAG:
                         if(parser.getName().equals("Game")){
                             if(game.getRelease().equals("")){
-                                game.setRelease("Unknown");
+                                game.setRelease("Unknown release");
                             }
                             gamesList.add(game);
                             game = null;
                         }
                         break;
-
                 }
-
                 event = parser.next();
             }
 

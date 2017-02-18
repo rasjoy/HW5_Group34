@@ -1,3 +1,4 @@
+
 package com.example.joyrasmussen.hw5_group34;
 
 import android.content.Intent;
@@ -14,8 +15,15 @@ import android.widget.RadioGroup;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import java.util.ArrayList;
+
+/*
+HW 05
+MainActivity.java
+Robert Holt & Joy Rasmussen
+Group 34
+ */
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -110,22 +118,18 @@ public class MainActivity extends AppCompatActivity {
 
     public void goClick(View v){
 
-
         int id = rg.getCheckedRadioButtonId();
 
         if(id != -1) {
-            String gameID = gamesList.get(id).getId();
 
-            String URL = "http://thegamesdb.net/api/GetGame.php?id=" + gameID;
+            Game game = gamesList.get(id);
 
             Intent intent = new Intent("com.example.joyrasmussen.hw5_group34.intent.action.Details");
-
-            //startActivity(intent);
+            intent.putExtra("game", game);
+            startActivity(intent);
         } else {
             Toast.makeText(this, "Select a game", Toast.LENGTH_SHORT).show();
         }
-
-
     }
 
     public void setGamesList(ArrayList<Game> gamesList) {
