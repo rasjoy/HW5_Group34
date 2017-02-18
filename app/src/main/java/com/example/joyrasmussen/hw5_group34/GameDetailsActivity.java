@@ -13,6 +13,8 @@ import android.widget.Toast;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
+
 public class GameDetailsActivity extends AppCompatActivity {
     GameDetail gameDetail;
     ImageView image;
@@ -72,10 +74,23 @@ public class GameDetailsActivity extends AppCompatActivity {
         });
         overview.setText(gameDetail.getOverview());
         overview.setVisibility(View.VISIBLE);
-        genre.setText(gameDetail.getGenre());
+        ArrayList<String> genreList = gameDetail.getGenre();
+        if(1 == genreList.size()){
+            genre.append(genreList.get(0));
+        }else{
+            genre.setText("Genre: ");
+            for(String gen: genreList){
+                genre.append(gen);
+                if(genreList.indexOf(gen) != genreList.size()-1 ){
+                    genre.append(", ");
+                }
+            }
+
+        }
         genre.setVisibility(View.VISIBLE);
-        publisher.setText(gameDetail.getPublisher());
         publisher.setVisibility(View.VISIBLE);
+        publisher.append(gameDetail.getPublisher());
+
 
 
     }

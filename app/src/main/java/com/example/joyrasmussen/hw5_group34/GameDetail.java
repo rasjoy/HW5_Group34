@@ -1,11 +1,15 @@
 package com.example.joyrasmussen.hw5_group34;
 
+import java.util.ArrayList;
+
 /**
  * Created by joyrasmussen on 2/15/17.
  */
 
 public class GameDetail extends Game {
-        String imageUrl, videoUrl, overview, genre, publisher;
+        String imageUrl, videoUrl, overview, publisher;
+        ArrayList<String> genre;
+        ArrayList<String> similar;
     public GameDetail(){
         super();
 
@@ -39,12 +43,20 @@ public class GameDetail extends Game {
         this.overview = overview;
     }
 
-    public String getGenre() {
+    public ArrayList<String> getGenre() {
         return genre;
     }
 
-    public void setGenre(String genre) {
+    public void setGenre(ArrayList<String> genre) {
         this.genre = genre;
+    }
+
+    public ArrayList<String> getSimilar() {
+        return similar;
+    }
+
+    public void setSimilar(ArrayList<String> similar) {
+        this.similar = similar;
     }
 
     public String getPublisher() {
