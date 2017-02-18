@@ -6,16 +6,17 @@ package com.example.joyrasmussen.hw5_group34;
 
 public class Game {
     String id, title, platform, release;
-    public Game(){
 
-    }
     public Game(Game game){
         id = game.getId();
         title = game.getTitle();
         platform = game.getPlatform();
         release = game.getRelease();
 
+    }
 
+    public Game(){
+        id = title = platform = release = "";
     }
 
     public String getId() {

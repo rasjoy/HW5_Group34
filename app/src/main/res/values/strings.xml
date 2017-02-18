@@ -8,4 +8,6 @@
     <string name="play">Play Trailer</string>
     <string name="genre">Genre:</string>
     <string name="pub">Publisher:</string>
+    <string name="searchButton">Search</string>
+    <string name="noResultsTextView">No results found</string>
 </resources>
