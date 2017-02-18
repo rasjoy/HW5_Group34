@@ -6,7 +6,15 @@ package com.example.joyrasmussen.hw5_group34;
 
 public class GameDetail extends Game {
         String imageUrl, videoUrl, overview, genre, publisher;
+    public GameDetail(){
+        super();
 
+    }
+    public GameDetail(Game game){
+            super(game);
+
+
+    }
     public String getImageUrl() {
         return imageUrl;
     }

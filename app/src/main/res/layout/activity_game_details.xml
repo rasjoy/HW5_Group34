@@ -17,7 +17,8 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/title" />
+        android:id="@+id/title"
+        android:visibility="invisible" />
 
     <ImageView
         android:layout_width="match_parent"
@@ -27,7 +28,8 @@
         android:layout_alignParentStart="true"
         android:id="@+id/image"
         android:maxHeight="200dp"
-        android:layout_height="100dp" />
+        android:layout_height="100dp"
+        android:visibility="invisible" />
 
     <TextView
         android:text="@string/OverView"
@@ -35,7 +37,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/image"
         android:layout_marginTop="5dp"
-        android:id="@+id/overView" />
+        android:id="@+id/overView"
+        android:visibility="invisible" />
 
     <LinearLayout
         android:orientation="horizontal"
@@ -61,7 +64,8 @@
                     android:text="TextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/overviewText" />
+                    android:id="@+id/overviewText"
+                    android:visibility="invisible" />
             </LinearLayout>
         </ScrollView>
     </LinearLayout>
@@ -71,7 +75,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/genre"
-        android:layout_above="@+id/publisher" />
+        android:layout_above="@+id/publisher"
+        android:visibility="invisible" />
 
     <Button
         android:text="@string/fin"
@@ -80,7 +85,8 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:id="@+id/finishButton"
-        android:ems="10" />
+        android:ems="10"
+        android:enabled="false" />
 
     <Button
         android:text="@string/sim"
@@ -90,7 +96,8 @@
         android:allowUndo="true"
         android:layout_above="@+id/finishButton"
         android:layout_centerHorizontal="true"
-        android:ems="10" />
+        android:ems="10"
+        android:enabled="false" />
 
     <TextView
         android:text="@string/pub"
@@ -100,7 +107,8 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:id="@+id/publisher"
-        android:layout_marginBottom="10dp" />
+        android:layout_marginBottom="10dp"
+        android:visibility="invisible" />
 
     <Button
         android:text="@string/play"
@@ -109,6 +117,26 @@
         android:id="@+id/trailerButton"
         android:layout_above="@+id/similarButton"
         android:layout_centerHorizontal="true"
-        android:ems="10" />
+        android:ems="10"
+        android:onClick="playTrailer"
+        android:enabled="false" />
+
+    <ProgressBar
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/loadingProgress"
+        android:layout_alignTop="@+id/image"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="76dp" />
+
+    <TextView
+        android:text="loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/image"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp"
+        android:id="@+id/loadingText" />
 
 </RelativeLayout>
