@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     ScrollView scrollView;
     Button goButton;
     TextView noResultsTextView;
+    Button searchButton;
 
     ArrayList<Game> gamesList;
     LinearLayout linearLayout;
@@ -49,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
         scrollView = (ScrollView) findViewById(R.id.scrollView2);
         linearLayout = (LinearLayout) findViewById(R.id.LinearLayout);
         goButton = (Button) findViewById(R.id.goButton);
+        searchButton = (Button) findViewById(R.id.searchButton);
         gamesList = new ArrayList<Game>();
         noResultsTextView = (TextView) findViewById(R.id.noResultsTextView);
 
@@ -57,6 +59,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void showResults(){
+
+        searchButton.setEnabled(true);
 
         progBar.setVisibility(View.GONE);
 
@@ -73,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void search(View view){
 
+        searchButton.setEnabled(false);
         goButton.setEnabled(false);
         if(gamesList != null) {
             gamesList.clear();
