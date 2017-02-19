@@ -55,27 +55,29 @@ public class SimilarGames extends AppCompatActivity {
         loading.setVisibility(View.INVISIBLE);
 
         for(Game game: gameLists){
-            TextView text = new TextView(this);
-            text.setText("");
+            if(game != null) {
+                TextView text = new TextView(this);
+                text.setText("");
 
-            if(game.getTitle() != null){
-                text.append(game.getTitle() + ".");
-            }else{
-                text.append("n/a. ");
+                if (game.getTitle() != null) {
+                    text.append(game.getTitle() + ".");
+                } else {
+                    text.append("n/a. ");
 
-            }
-            if(game.getRelease() != null){
-                text.append(" Released in " + game.getRelease() + ". ");
-            }else{
-                text.append("Released in n/a.");
-            }
-            if(game.getPlatform() != null){
-                text.append("Platform: " + game.getPlatform());
-            }else{
-                text.append("Platform: n/a");
-            }
+                }
+                if (game.getRelease() != null) {
+                    text.append(" Released in " + game.getRelease() + ". ");
+                } else {
+                    text.append("Released in n/a.");
+                }
+                if (game.getPlatform() != null) {
+                    text.append("Platform: " + game.getPlatform());
+                } else {
+                    text.append("Platform: n/a");
+                }
 
-            layout.addView(text);
+                layout.addView(text);
+            }
         }
 
 

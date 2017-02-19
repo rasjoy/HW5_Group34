@@ -6,11 +6,11 @@
 
     <application
         android:allowBackup="true"
+        android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        android:hardwareAccelerated="true">
+        android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,14 +27,25 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".SimilarGames" >
-        <intent-filter>
-            <action android:name="com.example.joyrasmussen.hw5_group34.intent.action.Similar" />
+        <activity android:name=".SimilarGames">
+            <intent-filter>
+                <action android:name="com.example.joyrasmussen.hw5_group34.intent.action.Similar" />
 
-            <category android:name="android.intent.category.DEFAULT" />
-        </intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
-        <activity android:name=".Webview"></activity>
+        <activity android:name=".Webview" >
+            <action android:name="android.intent.action.VIEW" />
+            <category android:name="android.intent.category.DEFAULT" />
+            <category android:name="android.intent.category.BROWSABLE" />
+            <data android:scheme="http"
+                android:host="*.youtube.com"
+                android:pathPrefix="\watch"/>
+            <data android:scheme="https"
+                android:host="*.youtube.com"
+                android:pathPrefix="\watch"/>
+
+        </activity>
     </application>
 
 </manifest>

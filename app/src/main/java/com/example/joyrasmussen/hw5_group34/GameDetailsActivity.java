@@ -2,9 +2,12 @@ package com.example.joyrasmussen.hw5_group34;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.net.Uri;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
@@ -18,6 +21,7 @@ import android.widget.Toast;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
+import java.net.URI;
 import java.util.ArrayList;
 /**
  * HomeWork 5
@@ -61,7 +65,7 @@ public class GameDetailsActivity extends AppCompatActivity {
         if(games == null){
            Toast.makeText(this, "Retrying retreiving Game Detail", Toast.LENGTH_LONG).show();
             new GameDetailsAsync(this).execute(game);
-
+            return;
 
         }
         gameDetail = games;
@@ -137,18 +141,43 @@ public class GameDetailsActivity extends AppCompatActivity {
     }
     public void playTrailer(View view){
         if(gameDetail.getVideoUrl() != null) {
+           Intent intent = new Intent("com.example.joyrasmussen.hw5_group34.intent.action.view");
+          intent.setData(Uri.parse(gameDetail.getVideoUrl()));
+           //intent.putExtra("URL", gameDetail.getVideoUrl());
+
+           // startActivity(intent);
+            DisplayMetrics metric = getResources().getDisplayMetrics();
+            int w = (int) ( metric.widthPixels / metric.density);
+            int h = w * 3/5;
 
             webview =(WebView) findViewById(R.id.webview);
-            webview.setVisibility(View.VISIBLE);
+          //  webview.setVisibility(View.VISIBLE);
             webview.getSettings().setJavaScriptEnabled(true);
-            webview.setWebChromeClient(new WebChromeClient());
-            webview .getSettings().setDomStorageEnabled(true);
+            webview.setWebViewClient(new WebViewClient(){
+                @SuppressWarnings("deprecation")
+                public boolean shouldOverrideUrlLoading(WebView view, String url) {
 
+                    if (Uri.parse(url).getHost().equals("www.youtube.com")) {
+                        // This is my web site, so do not override; let my WebView load the page
+                        return false;
+                    }
+                    // Otherwise, the link is not for a page on my site, so launch another Activity that handles URLs
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                    startActivity(intent);
+                    return true;
+                }
+            });
+
+
+            /*webview .getSettings().setDomStorageEnabled(true);
+                 String toLoad = "<html><body><iframe class=\"youtube-player\" type=\"text/html5\" width=\""
+                    +( w - 20) + "\" height=\"" + h + "\" src=\"" + gameDetail.getVideoUrl() +
+                    "\" frameborder=\"0\"\"allowfullscreen\"></iframe></body></html>";
+
+           // webview.loadData(toLoad, "text/html5", "utf-8");*//**//*
             webview.loadUrl(gameDetail.getVideoUrl());
-
-            webview.setVisibility(View.INVISIBLE);
-
-
+            webview.setVisibility(View.INVISIBLE);*/
+            webview.loadUrl(gameDetail.getVideoUrl());
 
         }else{
             Toast.makeText(this, "This video game does not have a trailer", Toast.LENGTH_LONG).show();
