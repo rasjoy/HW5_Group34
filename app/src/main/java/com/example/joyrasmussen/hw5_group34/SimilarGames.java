@@ -32,7 +32,7 @@ public class SimilarGames extends AppCompatActivity {
         gameLists = new ArrayList<>();
         dets = (GameDetail) getIntent().getSerializableExtra("GAME_DET");
 
-        title.append(dets.getTitle());
+        title.append(" " + dets.getTitle());
 
 
         for(String id: dets.getSimilar()){

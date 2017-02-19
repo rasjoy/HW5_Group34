@@ -87,7 +87,8 @@
         android:layout_centerHorizontal="true"
         android:id="@+id/finishButton"
         android:ems="10"
-        android:enabled="false" />
+        android:enabled="false"
+        android:onClick="finishDetail"/>
 
     <Button
         android:text="@string/sim"
@@ -149,6 +150,15 @@
         android:layout_alignTop="@+id/loadingText"
         android:layout_centerHorizontal="true"
         android:id="@+id/loadpic"
+        android:visibility="invisible" />
+
+    <WebView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/overView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="68dp"
+        android:id="@+id/webview"
         android:visibility="invisible" />
 
 </RelativeLayout>

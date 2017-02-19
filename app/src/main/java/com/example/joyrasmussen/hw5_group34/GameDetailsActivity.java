@@ -1,10 +1,14 @@
 package com.example.joyrasmussen.hw5_group34;
 
+import android.app.Dialog;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.webkit.WebChromeClient;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -23,6 +27,8 @@ public class GameDetailsActivity extends AppCompatActivity {
     Button finish, similar, trailer;
     ProgressBar progressBar;
     ProgressBar pictureBar;
+    WebView webview;
+    Game game;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,30 +47,26 @@ public class GameDetailsActivity extends AppCompatActivity {
         loading = (TextView) findViewById(R.id.loadingText);
         pictureBar = (ProgressBar)findViewById(R.id.loadpic);
 
-        Game game = (Game) getIntent().getSerializableExtra("game");
+        game = (Game) getIntent().getSerializableExtra("game");
         new GameDetailsAsync(this).execute(game);
 
     }
-    public void playTrailer(View view){
-       if(gameDetail.getVideoUrl() != null) {
 
-           WebView webView = new WebView(this);
-           setContentView(webView);
-       }else{
-           Toast.makeText(this, "This video game does not have a trailer", Toast.LENGTH_LONG);
+    public void loaded(GameDetail games){
+        if(games == null){
+           Toast.makeText(this, "Retrying retreiving Game Detail", Toast.LENGTH_LONG).show();
+            new GameDetailsAsync(this).execute(game);
 
-       }
 
-    }
-    public void loaded(GameDetail game){
-        pictureBar.setVisibility(View.VISIBLE);
-        gameDetail = game;
+        }
+        gameDetail = games;
+
         loading.setVisibility(View.INVISIBLE);
         progressBar.setVisibility(View.INVISIBLE);
+        pictureBar.setVisibility(View.VISIBLE);
         finish.setEnabled(true);
         similar.setEnabled(true);
         trailer.setEnabled(true);
-
         title.setText(gameDetail.getTitle());
         title.setVisibility(View.VISIBLE);
         image.setVisibility(View.VISIBLE);
@@ -111,20 +113,42 @@ public class GameDetailsActivity extends AppCompatActivity {
        }else{
            publisher.append(" n/a");
        }
+        }
 
-    }
+
     public void getSimilarGames(View v){
        if(gameDetail.getSimilar().size() > 0){
            Intent intent = new Intent("com.example.joyrasmussen.hw5_group34.intent.action.Similar");
            intent.putExtra("GAME_DET", gameDetail);
            startActivity(intent);
        }else{
-           Toast.makeText(this, "There are no similar games listed", Toast.LENGTH_LONG);
+           Toast.makeText(this, "There are no similar games listed", Toast.LENGTH_LONG).show();
 
        }
 
 
 
+
+    }
+    public void playTrailer(View view){
+        if(gameDetail.getVideoUrl() != null) {
+
+            webview =(WebView) findViewById(R.id.webview);
+            webview.setVisibility(View.VISIBLE);
+            webview.getSettings().setJavaScriptEnabled(true);
+            webview.setWebChromeClient(new WebChromeClient());
+            webview .getSettings().setDomStorageEnabled(true);
+
+            webview.loadUrl(gameDetail.getVideoUrl());
+
+            webview.setVisibility(View.INVISIBLE);
+
+
+
+        }else{
+            Toast.makeText(this, "This video game does not have a trailer", Toast.LENGTH_LONG).show();
+
+        }
 
     }
     public void finishDetail(View v){
