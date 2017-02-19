@@ -12,7 +12,10 @@ import java.net.ProtocolException;
 import java.net.URL;
 
 /**
- * Created by joyrasmussen on 2/15/17.
+ * HomeWork 5
+ * Group 34
+ * Joy Rasmussen and Robert Holt
+ * GameDetailAsync.java
  */
 
 public class GameDetailsAsync extends AsyncTask<Game, Void, GameDetail>{

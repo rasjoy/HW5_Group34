@@ -11,7 +11,12 @@ import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
 import java.util.ArrayList;
-
+/**
+ * HomeWork 5
+ * Group 34
+ * Joy Rasmussen and Robert Holt
+ * GameListAsync.java
+ */
 public class GamesListAsync extends AsyncTask<String, Void, ArrayList<Game>> {
 
     MainActivity main;

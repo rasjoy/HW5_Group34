@@ -17,13 +17,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 import java.util.ArrayList;
 
-/*
-HW 05
-MainActivity.java
-Robert Holt & Joy Rasmussen
-Group 34
+/**
+ * HomeWork 5
+ * Group 34
+ * Joy Rasmussen and Robert Holt
+ * MainActivity.java
  */
-
 
 public class MainActivity extends AppCompatActivity {
 

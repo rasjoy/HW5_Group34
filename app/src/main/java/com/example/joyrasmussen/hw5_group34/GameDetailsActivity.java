@@ -19,7 +19,12 @@ import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-
+/**
+ * HomeWork 5
+ * Group 34
+ * Joy Rasmussen and Robert Holt
+ * GameDetailsActivity.java
+ */
 public class GameDetailsActivity extends AppCompatActivity {
     GameDetail gameDetail;
     ImageView image;
@@ -117,7 +122,7 @@ public class GameDetailsActivity extends AppCompatActivity {
 
 
     public void getSimilarGames(View v){
-       if(gameDetail.getSimilar().size() > 0){
+       if(gameDetail.getSimilar() != null){
            Intent intent = new Intent("com.example.joyrasmussen.hw5_group34.intent.action.Similar");
            intent.putExtra("GAME_DET", gameDetail);
            startActivity(intent);

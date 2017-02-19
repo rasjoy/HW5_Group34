@@ -7,9 +7,11 @@ import org.xmlpull.v1.XmlPullParserFactory;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
-
 /**
- * Created by joyrasmussen on 2/18/17.
+ * HomeWork 5
+ * Group 34
+ * Joy Rasmussen and Robert Holt
+ * GameDetailUtil.java
  */
 
 public class GameDetailUtil {
@@ -91,6 +93,7 @@ public class GameDetailUtil {
 
                 event = parser.next();
             }
+
             return gameDetail;
         }
         public static Game parseDetail(InputStream in) throws XmlPullParserException, IOException {

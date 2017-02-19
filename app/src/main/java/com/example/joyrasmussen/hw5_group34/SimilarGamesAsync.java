@@ -13,7 +13,10 @@ import java.net.URL;
 import java.util.ArrayList;
 
 /**
- * Created by joyrasmussen on 2/18/17.
+ * HomeWork 5
+ * Group 34
+ * Joy Rasmussen and Robert Holt
+ * SimilarGamesAsync.java
  */
 
 public class SimilarGamesAsync extends AsyncTask<String, Void, Game> {

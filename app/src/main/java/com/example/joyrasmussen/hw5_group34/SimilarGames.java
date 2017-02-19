@@ -12,7 +12,12 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-
+/**
+ * HomeWork 5
+ * Group 34
+ * Joy Rasmussen and Robert Holt
+ * SimilarGames.java
+ */
 public class SimilarGames extends AppCompatActivity {
     LinearLayout layout;
     TextView title;

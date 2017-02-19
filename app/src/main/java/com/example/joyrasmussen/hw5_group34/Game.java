@@ -2,11 +2,11 @@ package com.example.joyrasmussen.hw5_group34;
 
 import java.io.Serializable;
 
-/*
-HW 05
-MainActivity.java
-Robert Holt & Joy Rasmussen
-Group 34
+/**
+ * HW 05
+ * Robert Holt & Joy Rasmussen
+ * Group 34
+ * Game.java
 */
 
 public class Game implements Serializable{

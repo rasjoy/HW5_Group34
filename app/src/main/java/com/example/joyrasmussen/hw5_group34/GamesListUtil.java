@@ -1,4 +1,10 @@
 package com.example.joyrasmussen.hw5_group34;
+/**
+ * HomeWork 5
+ * Group 34
+ * Joy Rasmussen and Robert Holt
+ * GamelistUtil.java
+ */
 
 import android.util.Log;
 import org.xmlpull.v1.XmlPullParser;

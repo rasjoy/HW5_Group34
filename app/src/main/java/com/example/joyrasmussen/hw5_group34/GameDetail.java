@@ -4,7 +4,10 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
- * Created by joyrasmussen on 2/15/17.
+ * HomeWork 5
+ * Group 34
+ * Joy Rasmussen and Robert Holt
+ * GameDetail.java
  */
 
 public class GameDetail extends Game implements Serializable{
