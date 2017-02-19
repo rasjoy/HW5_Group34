@@ -97,7 +97,7 @@ public class GameDetailUtil {
             XmlPullParser parser = XmlPullParserFactory.newInstance().newPullParser();
 
             parser.setInput(in, "UTF_8");
-            Game game = null;
+            Game game = new Game();
 
             int event = parser.getEventType();
             while(event != XmlPullParser.END_DOCUMENT){
@@ -114,13 +114,12 @@ public class GameDetailUtil {
                         case "GameTitle":
                             game.setTitle(parser.nextText().trim());
                             break;
+                        case "ReleaseDate":
+                            game.setRelease(parser.nextText().trim());
+                            break;
+                        default:
+                            break;
 
-
-                    }
-                }else if( event == XmlPullParser.END_TAG){
-                    if(parser.getName().equals("GameTitle")){
-
-                        return game;
                     }
                 }
 

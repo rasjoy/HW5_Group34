@@ -68,24 +68,30 @@ public class GameDetailsActivity extends AppCompatActivity {
         title.setText(gameDetail.getTitle());
         title.setVisibility(View.VISIBLE);
         image.setVisibility(View.VISIBLE);
-        Picasso.with(this).load(gameDetail.getImageUrl()).into(image, new Callback() {
-            @Override
-            public void onSuccess() {
-                pictureBar.setVisibility(View.INVISIBLE);
-            }
+        if(gameDetail.getImageUrl() != null) {
+            Picasso.with(this).load(gameDetail.getImageUrl()).into(image, new Callback() {
+                @Override
+                public void onSuccess() {
+                    pictureBar.setVisibility(View.INVISIBLE);
+                }
 
-            @Override
-            public void onError() {
+                @Override
+                public void onError() {
 
-            }
-        });
+                }
+            });
+        }else{
+            pictureBar.setVisibility(View.INVISIBLE);
+
+        }
         overview.setText(gameDetail.getOverview());
         overview.setVisibility(View.VISIBLE);
         ArrayList<String> genreList = gameDetail.getGenre();
+       if(genreList != null){
         if(1 == genreList.size()){
             genre.append(genreList.get(0));
         }else{
-            genre.setText("Genre: ");
+
             for(String gen: genreList){
                 genre.append(gen);
                 if(genreList.indexOf(gen) != genreList.size()-1 ){
@@ -94,12 +100,16 @@ public class GameDetailsActivity extends AppCompatActivity {
             }
 
         }
+       }else{
+           genre.append(" n/a");
+
+       }
         genre.setVisibility(View.VISIBLE);
         publisher.setVisibility(View.VISIBLE);
        if(gameDetail.getPublisher() != null) {
            publisher.append(gameDetail.getPublisher());
        }else{
-           publisher.append("n/a");
+           publisher.append(" n/a");
        }
 
     }

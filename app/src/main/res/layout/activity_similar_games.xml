@@ -37,7 +37,7 @@
         android:layout_centerHorizontal="true"
         android:id="@+id/finishButton"
         android:ems="10"
-        android:onClick=""/>
+        android:onClick="finishSimilar"/>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -46,7 +46,8 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="20dp"
-        android:layout_above="@+id/finishButton">
+        android:layout_above="@+id/finishButton"
+        android:onClick="finishSimilar">
 
         <LinearLayout
             android:layout_width="match_parent"
