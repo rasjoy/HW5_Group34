@@ -165,7 +165,7 @@ public class GameDetailsActivity extends AppCompatActivity {
                 }
             });
             webview.loadUrl(gameDetail.getVideoUrl());
-            
+
         }else{
             Toast.makeText(this, "This video game does not have a trailer", Toast.LENGTH_LONG).show();
 
