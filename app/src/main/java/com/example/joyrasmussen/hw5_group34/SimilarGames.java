@@ -33,7 +33,7 @@ public class SimilarGames extends AppCompatActivity {
         loading = (TextView) findViewById(R.id.loadingView);
         layout = (LinearLayout) findViewById(R.id.textHere);
         title = (TextView) findViewById(R.id.similarGames2);
-        
+
         gameLists = new ArrayList<>();
         dets = (GameDetail) getIntent().getSerializableExtra("GAME_DET");
 
