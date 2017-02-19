@@ -1,12 +1,13 @@
 package com.example.joyrasmussen.hw5_group34;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by joyrasmussen on 2/15/17.
  */
 
-public class GameDetail extends Game {
+public class GameDetail extends Game implements Serializable{
         String imageUrl, videoUrl, overview, publisher;
         ArrayList<String> genre;
         ArrayList<String> similar;

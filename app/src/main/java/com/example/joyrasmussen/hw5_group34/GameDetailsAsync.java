@@ -51,7 +51,7 @@ public class GameDetailsAsync extends AsyncTask<Game, Void, GameDetail>{
             e.printStackTrace();
         }
 
-        return null;
+        return (GameDetail) params[0];
     }
 
     @Override

@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
         scrollView.setVisibility(View.GONE);
         noResultsTextView.setVisibility(View.GONE);
 
-        String searchTerm = searchEditText.getText().toString().replace(" ", "");
+        String searchTerm = searchEditText.getText().toString().replace(" ", "%20");
         String URL = "http://thegamesdb.net/api/GetGamesList.php?name=" + searchTerm;
 
         GamesListAsync downloadTask = new GamesListAsync(this);

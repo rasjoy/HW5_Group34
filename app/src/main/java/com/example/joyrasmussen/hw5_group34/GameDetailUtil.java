@@ -19,7 +19,7 @@ public class GameDetailUtil {
 
         public static GameDetail parseDetail(InputStream in, Game game) throws XmlPullParserException, IOException {
 
-           String baseURL = null;
+            String baseURL = null;
             ArrayList<String> genre = new ArrayList<>();
             ArrayList<String> similar = new ArrayList<>();
             XmlPullParser parser = XmlPullParserFactory.newInstance().newPullParser();
@@ -32,33 +32,31 @@ public class GameDetailUtil {
                     case XmlPullParser.START_TAG:
                         switch (parser.getName()){
                             case "baseImgUrl":
-                                baseURL = parser.getText().trim();
+
+                                baseURL = parser.nextText().trim();
                                 break;
                             case "Overview":
-                                gameDetail.setOverview(parser.getText().trim());
+                                gameDetail.setOverview(parser.nextText().trim());
                                 break;
                             case "genre":
-                                genre.add(parser.getText().trim());
+                                genre.add(parser.nextText().trim());
                                 break;
                             case "Youtube":
-                                gameDetail.setVideoUrl(parser.getText().trim());
+                                gameDetail.setVideoUrl(parser.nextText().trim());
                                 break;
                             case "Publisher":
-                                gameDetail.setPublisher(parser.getText().trim());
+                                gameDetail.setPublisher(parser.nextText().trim());
                                 break;
-                            case "Similar":
-                                parser.next();
-                               while(!parser.getName().equals("Similar")){
-                                   if(parser.getName().equals("id")){
-                                        similar.add(parser.getText().trim());
-                                   }
-                                   parser.next();
-                               }
-                                gameDetail.setSimilar(similar);
+                            case "id":
+                                String text = parser.nextText().trim();
+                                if(!text.equals(gameDetail.getId())){
+                                    similar.add(text);
+
+                                }
                                 break;
                             case "thumb":
                                 if(gameDetail.getImageUrl() == null){
-                                   gameDetail.setImageUrl(baseURL + parser.getName().trim());
+                                   gameDetail.setImageUrl(baseURL + parser.nextText().trim());
                                 }
                                 break;
                             case "boxart":
@@ -76,6 +74,9 @@ public class GameDetailUtil {
                                 case "Genres":
                                     gameDetail.setGenre( genre);
                                     break;
+                                case "Similar":
+                                    gameDetail.setSimilar(similar);
+                                    break;
                                 default:
                                     break;
 
@@ -92,9 +93,44 @@ public class GameDetailUtil {
             }
             return gameDetail;
         }
+        public static Game parseDetail(InputStream in) throws XmlPullParserException, IOException {
+            XmlPullParser parser = XmlPullParserFactory.newInstance().newPullParser();
 
+            parser.setInput(in, "UTF_8");
+            Game game = null;
+
+            int event = parser.getEventType();
+            while(event != XmlPullParser.END_DOCUMENT){
+                if(event == XmlPullParser.START_TAG){
+                    switch (parser.getName()) {
+                        case "id":
+                            if(game.getId() == null) {
+                                game.setId(parser.nextText().trim());
+                            }
+                            break;
+                        case "Platform":
+                            game.setPlatform(parser.nextText().trim());
+                            break;
+                        case "GameTitle":
+                            game.setTitle(parser.nextText().trim());
+                            break;
+
+
+                    }
+                }else if( event == XmlPullParser.END_TAG){
+                    if(parser.getName().equals("GameTitle")){
+
+                        return game;
+                    }
+                }
+
+                event = parser.next();
+            }
+            return game;
+            }
+        }
 
 
     }
 
-}
+

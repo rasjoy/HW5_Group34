@@ -10,4 +10,6 @@
     <string name="pub">Publisher:</string>
     <string name="searchButton">Search</string>
     <string name="noResultsTextView">No results found</string>
+    <string name="similarGames">Similar games to</string>
+    <string name="loading">Loading</string>
 </resources>

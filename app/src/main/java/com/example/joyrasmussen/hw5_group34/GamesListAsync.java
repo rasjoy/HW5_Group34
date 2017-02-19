@@ -23,6 +23,7 @@ public class GamesListAsync extends AsyncTask<String, Void, ArrayList<Game>> {
 
     @Override
     protected ArrayList<Game> doInBackground(String... params) {
+
         try {
             URL url = new URL(params[0]);
             HttpURLConnection con = (HttpURLConnection) url.openConnection();

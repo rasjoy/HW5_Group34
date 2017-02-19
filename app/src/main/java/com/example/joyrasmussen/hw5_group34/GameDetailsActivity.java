@@ -1,5 +1,6 @@
 package com.example.joyrasmussen.hw5_group34;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -21,6 +22,7 @@ public class GameDetailsActivity extends AppCompatActivity {
     TextView title, overview, genre, publisher, loading;
     Button finish, similar, trailer;
     ProgressBar progressBar;
+    ProgressBar pictureBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +39,10 @@ public class GameDetailsActivity extends AppCompatActivity {
         image = (ImageView) findViewById(R.id.image);
         progressBar = (ProgressBar) findViewById(R.id.loadingProgress);
         loading = (TextView) findViewById(R.id.loadingText);
+        pictureBar = (ProgressBar)findViewById(R.id.loadpic);
+
+        Game game = (Game) getIntent().getSerializableExtra("game");
+        new GameDetailsAsync(this).execute(game);
 
     }
     public void playTrailer(View view){
@@ -51,6 +57,7 @@ public class GameDetailsActivity extends AppCompatActivity {
 
     }
     public void loaded(GameDetail game){
+        pictureBar.setVisibility(View.VISIBLE);
         gameDetail = game;
         loading.setVisibility(View.INVISIBLE);
         progressBar.setVisibility(View.INVISIBLE);
@@ -64,7 +71,7 @@ public class GameDetailsActivity extends AppCompatActivity {
         Picasso.with(this).load(gameDetail.getImageUrl()).into(image, new Callback() {
             @Override
             public void onSuccess() {
-
+                pictureBar.setVisibility(View.INVISIBLE);
             }
 
             @Override
@@ -89,9 +96,29 @@ public class GameDetailsActivity extends AppCompatActivity {
         }
         genre.setVisibility(View.VISIBLE);
         publisher.setVisibility(View.VISIBLE);
-        publisher.append(gameDetail.getPublisher());
+       if(gameDetail.getPublisher() != null) {
+           publisher.append(gameDetail.getPublisher());
+       }else{
+           publisher.append("n/a");
+       }
+
+    }
+    public void getSimilarGames(View v){
+       if(gameDetail.getSimilar().size() > 0){
+           Intent intent = new Intent("com.example.joyrasmussen.hw5_group34.intent.action.Similar");
+           intent.putExtra("GAME_DET", gameDetail);
+           startActivity(intent);
+       }else{
+           Toast.makeText(this, "There are no similar games listed", Toast.LENGTH_LONG);
+
+       }
 
 
+
+
+    }
+    public void finishDetail(View v){
+        finish();
 
     }
 

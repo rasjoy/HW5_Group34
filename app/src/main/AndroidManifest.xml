@@ -26,7 +26,13 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".SimilarGames" />
+        <activity android:name=".SimilarGames" >
+        <intent-filter>
+            <action android:name="com.example.joyrasmussen.hw5_group34.intent.action.Similar" />
+
+            <category android:name="android.intent.category.DEFAULT" />
+        </intent-filter>
+        </activity>
         <activity android:name=".Webview"></activity>
     </application>
 
