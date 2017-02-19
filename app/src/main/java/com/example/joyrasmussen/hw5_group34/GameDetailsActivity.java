@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
+import android.os.Build;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -69,7 +70,21 @@ public class GameDetailsActivity extends AppCompatActivity {
 
         }
         gameDetail = games;
-
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            finish.setBackgroundColor(getResources().getColor(R.color.ButtonBacktrou, this.getTheme()));
+            finish.setTextColor(getResources().getColor(R.color.buttontext, this.getTheme()));
+            similar.setBackgroundColor(getResources().getColor(R.color.ButtonBacktrou, this.getTheme()));
+            similar.setTextColor(getResources().getColor(R.color.buttontext, this.getTheme()));
+            trailer.setBackgroundColor(getResources().getColor(R.color.ButtonBacktrou, this.getTheme()));
+            trailer.setTextColor(getResources().getColor(R.color.buttontext, this.getTheme()));
+        }else {
+            finish.setBackgroundColor(getResources().getColor(R.color.ButtonBacktrou));
+            finish.setTextColor(getResources().getColor(R.color.buttontext));
+            similar.setBackgroundColor(getResources().getColor(R.color.ButtonBacktrou));
+             similar.setTextColor(getResources().getColor(R.color.buttontext));
+            trailer.setBackgroundColor(getResources().getColor(R.color.ButtonBacktrou));
+             trailer.setTextColor(getResources().getColor(R.color.buttontext));
+        }
         loading.setVisibility(View.INVISIBLE);
         progressBar.setVisibility(View.INVISIBLE);
         pictureBar.setVisibility(View.VISIBLE);

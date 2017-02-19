@@ -37,7 +37,9 @@
         android:layout_centerHorizontal="true"
         android:id="@+id/finishButton"
         android:ems="10"
-        android:onClick="finishSimilar"/>
+        android:onClick="finishSimilar"
+        android:background="@android:color/holo_blue_light"
+        android:textColor="@android:color/background_light" />
 
     <ScrollView
         android:layout_width="match_parent"
