@@ -25,8 +25,7 @@
             android:layout_centerHorizontal="true"
             android:id="@+id/goButton"
             android:onClick="goClick"
-            android:background="@android:color/holo_blue_light"
-            android:textColor="@android:color/background_light"
+            android:background="?android:attr/colorButtonNormal"
             android:enabled="false" />
 
         <EditText
@@ -49,8 +48,6 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
             android:id="@+id/searchButton"
-            android:background="@android:color/holo_blue_light"
-            android:textColor="@android:color/background_light"
             android:onClick="search" />
 
         <ScrollView
