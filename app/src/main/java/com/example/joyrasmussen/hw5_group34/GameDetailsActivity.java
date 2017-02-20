@@ -1,18 +1,9 @@
 package com.example.joyrasmussen.hw5_group34;
 
-import android.app.Dialog;
 import android.content.Intent;
-import android.graphics.Color;
-import android.net.Uri;
-import android.os.Build;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.webkit.WebChromeClient;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -22,7 +13,6 @@ import android.widget.Toast;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
-import java.net.URI;
 import java.util.ArrayList;
 /**
  * HomeWork 5
@@ -37,7 +27,6 @@ public class GameDetailsActivity extends AppCompatActivity {
     Button finish, similar, trailer;
     ProgressBar progressBar;
     ProgressBar pictureBar;
-    WebView webview;
     Game game;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -143,28 +132,11 @@ public class GameDetailsActivity extends AppCompatActivity {
     public void playTrailer(View view){
         if(gameDetail.getVideoUrl() != null) {
 
+            Intent intent = new Intent("com.example.joyrasmussen.hw5_group34.intent.action.WebViewClass");
+            intent.putExtra("GAME", gameDetail.getTitle());
+            intent.putExtra("URL", gameDetail.getVideoUrl());
+            startActivity(intent);
 
-            DisplayMetrics metric = getResources().getDisplayMetrics();
-            int w = (int) ( metric.widthPixels / metric.density);
-            int h = w * 3/5;
-
-            webview =(WebView) findViewById(R.id.webview);
-            webview.getSettings().setJavaScriptEnabled(true);
-            webview.setWebViewClient(new WebViewClient(){
-                @SuppressWarnings("deprecation")
-                public boolean shouldOverrideUrlLoading(WebView view, String url) {
-
-                    if (Uri.parse(url).getHost().equals("www.youtube.com")) {
-                        // This is my web site, so do not override; let my WebView load the page
-                        return false;
-                    }
-                    // Otherwise, the link is not for a page on my site, so launch another Activity that handles URLs
-                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-                    startActivity(intent);
-                    return true;
-                }
-            });
-            webview.loadUrl(gameDetail.getVideoUrl());
 
         }else{
             Toast.makeText(this, "This video game does not have a trailer", Toast.LENGTH_LONG).show();

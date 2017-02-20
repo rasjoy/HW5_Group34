@@ -27,7 +27,8 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".SimilarGames"
+        <activity
+            android:name=".SimilarGames"
             android:label="@string/sim">
             <intent-filter>
                 <action android:name="com.example.joyrasmussen.hw5_group34.intent.action.Similar" />
@@ -35,17 +36,12 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".Webview" >
-            <action android:name="android.intent.action.VIEW" />
-            <category android:name="android.intent.category.DEFAULT" />
-            <category android:name="android.intent.category.BROWSABLE" />
-            <data android:scheme="http"
-                android:host="*.youtube.com"
-                android:pathPrefix="\watch"/>
-            <data android:scheme="https"
-                android:host="*.youtube.com"
-                android:pathPrefix="\watch"/>
 
+        <activity android:name=".WebViewClass">
+            <intent-filter>
+                <action android:name="com.example.joyrasmussen.hw5_group34.intent.action.WebViewClass"/>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
     </application>
 
